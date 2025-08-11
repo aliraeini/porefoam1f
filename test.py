@@ -23,5 +23,13 @@ with open("voxcyl20c1f.mhd", 'w') as f1:
 				""");#ElementDataFile = NO_READ
 
 runSh('.', "rm -rf voxcyl20c1f/*");
-runSh('.', "AllRunImagePar voxcyl20c1f.mhd");
+
+# GitHub nodes are limited to 2 processes
+env = {
+	"nProcX": "2",
+	"nProcY": "1",
+	"nProcZ": "1",
+}
+
+runSh('.', "AllRunImagePar voxcyl20c1f.mhd", envs=env);
 exit(fileFloatDiffersFrom("voxcyl20c1f/voxcyl20c1f-1-X/summary_voxcyl20c1f-1-X.txt","K_x= ",2.44436e-12))
