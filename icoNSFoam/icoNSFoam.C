@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
 
 	if(!std::ifstream(runTime.timeName()+"/p").good())
 	{
-		Info<<"Error Pressure is not written, trying again:";
+		Info<<"WARNING: Pressure is not written, trying again:";
 		U.write();
 		phi.write();
 		p.write();
